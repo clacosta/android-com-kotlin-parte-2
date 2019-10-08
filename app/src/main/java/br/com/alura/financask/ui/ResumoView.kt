@@ -20,8 +20,13 @@ class ResumoView(
     private val corReceita = ContextCompat.getColor(context, R.color.receita)
     private val corDespesa = ContextCompat.getColor(context, R.color.despesa)
 
+    fun atualiza(){
+        adicionaReceita()
+        adicionaDespesa()
+        adicionaTotal()
+    }
 
-    fun adicionaReceita() {
+    private fun adicionaReceita() {
         val totalReceita = resumo.receita()
         with(view.resumo_card_receita) {
             setTextColor(corReceita)
@@ -29,7 +34,7 @@ class ResumoView(
         }
     }
 
-    fun adicionaDespesa() {
+    private fun adicionaDespesa() {
         val totalDespesa = resumo.despesa()
         with(view.resumo_card_despesa) {
             setTextColor(corDespesa)
@@ -37,7 +42,7 @@ class ResumoView(
         }
     }
 
-    fun adicionaTotal() {
+    private fun adicionaTotal() {
         val total = resumo.total()
         val cor = corPor(total)
         with(view.resumo_card_total) {
