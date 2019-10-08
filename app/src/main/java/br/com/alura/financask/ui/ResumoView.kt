@@ -32,6 +32,13 @@ class ResumoView(
 
     fun adicionaTotal() {
         val total = resumo.total()
+        if(total.compareTo(BigDecimal.ZERO) >= 0){
+            view.resumo_card_total.setTextColor(ContextCompat.getColor(context, R.color.receita))
+        }
+        else
+        {
+            view.resumo_card_total.setTextColor(ContextCompat.getColor(context, R.color.despesa))
+        }
         view.resumo_card_total.text = total.formataParaBrasileiro()
     }
 
