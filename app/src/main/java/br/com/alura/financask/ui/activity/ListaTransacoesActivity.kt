@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.Toast
 import br.com.alura.financask.R
@@ -45,12 +46,21 @@ class ListaTransacoesActivity : AppCompatActivity() {
                         var dataSelecionada = Calendar.getInstance()
                         dataSelecionada.set(year, month, dayOfMonth)
                         viewCriada.form_transacao_data.setText(dataSelecionada.formataParaBrasileiro())
-                    }, ano, mes, dia).show()
+                    }, ano, mes, dia
+                ).show()
             }
-
+            val adaptar = ArrayAdapter.createFromResource(
+                this,
+                R.array.categorias_de_receita,
+                android.R.layout.simple_spinner_dropdown_item
+            )
+            viewCriada.form_transacao_categoria.adapter = adaptar
+            
             AlertDialog.Builder(this)
                 .setTitle(R.string.adiciona_despesa)
                 .setView(viewCriada)
+                .setPositiveButton("Adicionar", null)
+                .setNegativeButton("Cancelar",null)
                 .show()
         }
     }
