@@ -1,11 +1,10 @@
 package br.com.alura.financask.extension
 
 import java.text.SimpleDateFormat
-import java.util.Calendar
+import java.util.*
 
-fun Calendar.formataParaBrasileiro(): String? {
+fun Calendar.formataParaBrasileiro() : String{
     val formatoBrasileiro = "dd/MM/yyyy"
     val format = SimpleDateFormat(formatoBrasileiro)
-    val time = this.time
-    return format.format(time)
+    return format.format(this.time)
 }
